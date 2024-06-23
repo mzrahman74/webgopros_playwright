@@ -4,6 +4,7 @@ const config: PlaywrightTestConfig = {
   timeout: 6000,
   retries: 0,
   testDir: "tests/api",
+  reporter: "html",
   use: {
     headless: true,
     screenshot: "only-on-failure",

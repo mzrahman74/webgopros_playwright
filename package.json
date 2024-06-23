@@ -6,7 +6,9 @@
   "scripts": {
     "test": "npx run playwright test",
     "e2e": "npx playwright test",
-    "tests:api": "playwright test --config=api.config.ts --project=Chromium"
+    "tests:api": "playwright test --config=api.config.ts --project=Chromium",
+    "mobile:spec": "npx playwright test tests/webgo.spec.ts --config=playwright.config.ts --workers 6",
+    "mobile:api": "npx playwright test tests/Api/api.spec.ts --config=playwright.config.ts"
   },
   "author": "Mohammad",
   "license": "ISC",

@@ -1,5 +1,5 @@
 // @ts-check
-const { defineConfig, devices } = require("@playwright/test");
+import { defineConfig, devices } from "@playwright/test";
 
 /**
  * Read environment variables from file.
@@ -117,11 +117,11 @@ module.exports = defineConfig({
     /* Test against mobile viewports. */
     {
       name: "Mobile Chrome",
-      use: { headless: false, ...devices["Pixel 5"], fullyParallel: true }
+      use: { headless: false, ...devices["Pixel 5"] }
     },
     {
       name: "Mobile Safari",
-      use: { headless: false, ...devices["iPhone 12"], fullyParallel: true }
+      use: { headless: false, ...devices["iPhone 12"] }
     }
 
     /* Test against branded browsers. */
