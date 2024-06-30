@@ -117,11 +117,13 @@ module.exports = defineConfig({
     /* Test against mobile viewports. */
     {
       name: "Mobile Chrome",
-      use: { headless: false, ...devices["Pixel 5"] }
+      use: { headless: true, ...devices["Pixel 5"] },
+      fullyParallel: true
     },
     {
       name: "Mobile Safari",
-      use: { headless: false, ...devices["iPhone 12"] }
+      use: { headless: true, ...devices["iPhone 12"] },
+      fullyParallel: true
     }
 
     /* Test against branded browsers. */
