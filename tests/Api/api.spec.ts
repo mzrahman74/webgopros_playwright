@@ -24,7 +24,14 @@ test.describe.parallel("Api Testing", () => {
     expect(responseBody.data.name).toEqual("cerulean");
     expect(responseBody.data.year).toBe(2000);
     expect(responseBody.data.pantone_value).toBeTruthy();
-    expect(responseBody.support.url).toEqual("https://reqres.in/#support-heading");
+  });
+
+  test("parsing body for support url & text", async ({ request }) => {
+    const response = await request.get(`${baseUrl}/user/1`);
+    const responseBody = JSON.parse(await response.text());
+    console.log(responseBody);
+    expect(responseBody.support.url).toEqual("https://contentcaddy.io?utm_source=reqres&utm_medium=json&utm_campaign=referral");
+    expect(responseBody.support.text).toEqual("Tired of writing endless social media content? Let Content Caddy generate it for you.");
   });
 
   test("POST request - login", async ({ request }) => {
