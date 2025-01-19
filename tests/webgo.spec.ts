@@ -52,7 +52,7 @@ test("web confirm contact page assertion", async ({ page }) => {
   await expect(page.locator('footer[id="id-footer" ] p')).toBeVisible();
 });
 
-test("home page assertion", async ({ page }) => {
+test("home page iframe assertion", async ({ page }) => {
   await expect(page).toHaveTitle("Mohammad Rahman Portfolio");
   const frameLocator = page.locator("iframe[class='video_one']").contentFrame();
   const locator = frameLocator.owner();
