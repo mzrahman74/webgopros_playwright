@@ -41,20 +41,20 @@ module.exports = defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
-    // {
-    //   name: "chromium",
-    //   use: {
-    //     browserName: "chromium",
-    //     headless: true,
-    //     screenshot: "only-on-failure",
-    //     video: "retain-on-failure",
-    //     trace: "retain-on-failure",
-    //     ignoreHTTPSErrors: true,
-    //     permissions: ["geolocation"],
-    //     ...devices["Desktop Chrome"],
-    //     fullyParallel: true
-    //   }
-    // },
+    {
+      name: "chromium",
+      use: {
+        browserName: "chromium",
+        headless: true,
+        screenshot: "only-on-failure",
+        video: "retain-on-failure",
+        trace: "retain-on-failure",
+        ignoreHTTPSErrors: true,
+        permissions: ["geolocation"],
+        ...devices["Desktop Chrome"],        
+      },
+      fullyParallel: true
+    },
 
     // {
     //   name: "safari",
@@ -115,16 +115,16 @@ module.exports = defineConfig({
     // }
 
     /* Test against mobile viewports. */
-    {
-      name: "Mobile Chrome",
-      use: { headless: true, ...devices["Pixel 5"] },
-      fullyParallel: true
-    },
-    {
-      name: "Mobile Safari",
-      use: { headless: true, ...devices["iPhone 12"] },
-      fullyParallel: true
-    }
+    // {
+    //   name: "Mobile Chrome",
+    //   use: { headless: true, ...devices["Pixel 5"] },
+    //   fullyParallel: true
+    // },
+    // {
+    //   name: "Mobile Safari",
+    //   use: { headless: true, ...devices["iPhone 12"] },
+    //   fullyParallel: true
+    // }
 
     /* Test against branded browsers. */
     // {
