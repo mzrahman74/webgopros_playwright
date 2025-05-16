@@ -23,7 +23,7 @@ test("web confirm about page assertion", async ({ page }) => {
     await page.locator('a[href="/about"]').click();
   }
 
-  await expect(page.locator("img.profile-img")).toBeVisible();
+  await expect(page.locator("img.profile")).toBeVisible();
   await expect(page.locator("#id-footer")).toBeVisible();
   await expect(page.locator('footer[id="id-footer" ] p')).toBeVisible();
 });
