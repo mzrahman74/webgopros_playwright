@@ -4,35 +4,51 @@ test.describe.parallel("Api Testing", () => {
   const baseUrl = "https://reqres.in/api";
 
   test("list resource", async ({ request }) => {
-    const response = await request.get(`${baseUrl}/unknown`);
+    const response = await request.get(`${baseUrl}/unknown`, {
+      headers: {
+        "x-api-key": "reqres-free-v1"
+      }
+    });
     expect(response.status()).toBe(200);
     const responseBody = JSON.parse(await response.text());
-    console.log(responseBody);
   });
   test("single resource", async ({ request }) => {
-    const response = await request.get(`${baseUrl}/unknown/2`);
+    const response = await request.get(`${baseUrl}/unknown/2` , {
+      headers: {
+        "x-api-key": "reqres-free-v1"
+      }
+    });
     expect(response.status()).toBe(200);
     const responseBody = JSON.parse(await response.text());
-    console.log(responseBody);
   });
   test("parsing body", async ({ request }) => {
-    const response = await request.get(`${baseUrl}/unknown/2`);
+    const response = await request.get(`${baseUrl}/unknown/2`, {
+      headers: {
+        "x-api-key": "reqres-free-v1"
+      }
+    });
     expect(response.status()).toBe(200);
     const responseBody = JSON.parse(await response.text());
-    console.log(responseBody);
     expect(responseBody.data.nmae).toEqual(undefined);
     expect(responseBody.data.id).toBe(2);
     expect(responseBody.data.year).toBe(2001);
     expect(responseBody.data.color).toBe("#C74375");
-    expect(responseBody.support.url).toEqual("https://reqres.in/#support-heading");
-    expect(responseBody.support.text).toEqual("To keep ReqRes free, contributions towards server costs are appreciated!");
+    expect(responseBody.support.url).toEqual("https://contentcaddy.io?utm_source=reqres&utm_medium=json&utm_campaign=referral");
+    expect(responseBody.support.text).toEqual("Tired of writing endless social media content? Let Content Caddy generate it for you.");
   });
   test("not found", async ({ request }) => {
-    const response = await request.get(`${baseUrl}/unknown/32`);
+    const response = await request.get(`${baseUrl}/unknown/23`, {
+      headers: {
+        "x-api-key": "reqres-free-v1"
+      }
+    });
     expect(response.status()).toBe(404);
   });
   test("register", async ({ request }) => {
     const response = await request.post(`${baseUrl}/register`, {
+      headers: {
+        "x-api-key": "reqres-free-v1"
+      },
       data: {
         email: "eve.holt@reqres.in",
         password: "pistol"
@@ -45,6 +61,9 @@ test.describe.parallel("Api Testing", () => {
   });
   test("unregister", async ({ request }) => {
     const response = await request.post(`${baseUrl}/register`, {
+      headers: {
+        "x-api-key": "reqres-free-v1"
+      },
       data: {
         email: "sydney@fife"
       }
@@ -55,6 +74,9 @@ test.describe.parallel("Api Testing", () => {
   });
   test("{PUT request - replacement", async ({ request }) => {
     const response = await request.put(`${baseUrl}/user/2`, {
+      headers: {
+        "x-api-key": "reqres-free-v1"
+      },
       data: {
         id: 2,
         name: "fuch rose",
@@ -65,7 +87,6 @@ test.describe.parallel("Api Testing", () => {
     });
     expect(response.status()).toBe(200);
     const responseBody = JSON.parse(await response.text());
-    console.log(responseBody);
-    expect(responseBody.updatedAt).toBeTruthy();
+     expect(responseBody.updatedAt).toBeTruthy();
   });
 });

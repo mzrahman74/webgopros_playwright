@@ -25,7 +25,7 @@ test("web confirm about page assertion", async ({ page }) => {
     await page.locator('a[href="/about"]').click();
   }
 
-  await expect(page.locator("img.profile")).toBeVisible();
+  await expect(page.locator("h1")).toBeVisible();
   await expect(page.locator("#id-footer")).toBeVisible();
   await expect(page.locator('footer[id="id-footer" ] p')).toBeVisible();
 });
@@ -45,11 +45,12 @@ test("web confirm contact page assertion", async ({ page }) => {
     await page.locator('a[href="/contact"]').click();
   }
 
-  await expect(page.locator("img.contact_me")).toBeVisible();
-  await expect(page.locator("#note-id-2nd")).toHaveAttribute("class", "note");
-  await expect(page.locator("#note-id-3rd")).toBeVisible();
-  await expect(page.locator("#id-footer")).toBeVisible();
-  await expect(page.locator('footer[id="id-footer" ] p')).toBeVisible();
+ await expect(page.locator("img#contact_me")).toBeVisible();
+ const iframeElement = page.locator('iframe[title="Google Map"]').contentFrame();
+ const map =iframeElement.owner();
+ await expect(map).toBeVisible();
+ await expect(page.locator("#id-footer")).toBeVisible();
+ await expect(page.locator('footer[id="id-footer" ] p')).toBeVisible();
 });
 
 test("home page assertion", async ({ page }) => {
